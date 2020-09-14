@@ -25,6 +25,7 @@ export class PokedexPage implements OnInit {
   private time : any = null;
   private loading : boolean = false;
   private scroll : boolean = true;
+  private showPaginate : boolean = true;
 
   constructor(
     private pokemonService : SearchService,
@@ -54,44 +55,37 @@ export class PokedexPage implements OnInit {
   }
 
   async listPokemon(params : number){
+    this.showPaginate = true;
     console.log(this.pokemonOffset); // ! Indice para trazer resultados
     this.pokemons = [];
 
-    // (await this.pokemonService.getAll(this.pokemonOffset)).subscribe(res => {
-    //   this.pokemons = res;
-    //   this.filteredPokemons = this.pokemons.sort((a, b) =>  {
-    //     if (a.id > b.id) {
-    //       return 1;
-    //     }
-    //     if (a.id < b.id) {
-    //       return -1;
-    //     }
-    //     return 0;
-    //   })
-    // });
-
-    await this.pokemonService.getAll(params).then(data => {
-      data.results.forEach(pokemon => {
-        this.pokemonService.getPokemonCard(pokemon.url).then(res => {
-          const pokemonCard = {
-            id: res['id'],
-            name: pokemon.name,
-            image: res['image'],
-            url: pokemon.url,
-          };
-          
-          let alreadyExists = this.pokemons.some(pokemon => pokemon.id === pokemonCard.id);
-          if (!alreadyExists) {
-            this.pokemons.push(pokemonCard);
-          }
-          else {
-            console.log(`Pokemon com ID: ${pokemonCard.id} já existe!`);
-          }
-        })
-      });
-
-      this.filteredPokemons = this.pokemons; // ! Vetor que recebe o objeto resultante das requisições
+    (await this.pokemonService.getAll(this.pokemonOffset)).subscribe(res => {
+      this.pokemons = res;
+      this.filteredPokemons = this.pokemons;
     });
+
+    // await this.pokemonService.getAll(params).then(data => {
+    //   data.results.forEach(pokemon => {
+    //     this.pokemonService.getPokemonCard(pokemon.url).then(res => {
+    //       const pokemonCard = {
+    //         id: res['id'],
+    //         name: pokemon.name,
+    //         image: res['image'],
+    //         url: pokemon.url,
+    //       };
+          
+    //       let alreadyExists = this.pokemons.some(pokemon => pokemon.id === pokemonCard.id);
+    //       if (!alreadyExists) {
+    //         this.pokemons.push(pokemonCard);
+    //       }
+    //       else {
+    //         console.log(`Pokemon com ID: ${pokemonCard.id} já existe!`);
+    //       }
+    //     })
+    //   });
+
+    //   this.filteredPokemons = this.pokemons; // ! Vetor que recebe o objeto resultante das requisições
+    // });
   }
 
   async loadFavourites(){
@@ -103,12 +97,12 @@ export class PokedexPage implements OnInit {
   async loadFilter(params : string){
     if (params == 'favourites') {
       await this.loadFavourites().then(() => {
-        this.scroll = false;
+        this.showPaginate = false;
         this.filteredPokemons = this.favourites;
       })
     }
     else {
-      this.scroll = true;
+      this.showPaginate = true;
       this.filteredPokemons = this.pokemons;
     }
   }
@@ -136,12 +130,14 @@ export class PokedexPage implements OnInit {
   pokemonSearch(event : any) {
     clearTimeout(this.time);
     this.loading = true;
+    this.showPaginate = false;
     this.filteredPokemons = [];
 
     this.time = setTimeout(() => {
       this.queryText = event.target.value;
 
       if (this.queryText == "") {
+        this.showPaginate = true;
         this.filteredPokemons = this.pokemons;
       }
       else {

@@ -14,32 +14,24 @@ export class SearchService {
   ) { }
 
   async getAll(offset : number){
-    return await axios.get(`${this.urlRoot}/pokemon?limit=50&offset=${offset}`)
-    .then(res => res.data);
+    // return await axios.get(`${this.urlRoot}/pokemon?limit=50&offset=${offset}`)
+    // .then(res => res.data);
 
-    // return this.http.get(`${this.urlRoot}/pokemon?limit=100&offset=${offset}`).pipe(
-    //   map(result => {
-    //     const temp = [];
+    return this.http.get(`${this.urlRoot}/pokemon?limit=50&offset=${offset}`).pipe(
+      map(result => {
 
-    //     result['results'].map(pokemon => {
+        let teste = result['results'].map((pokemon, id) => {
+          return {
+            id: offset + id + 1,
+            name: pokemon.name,
+            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${offset + id + 1}.png`,
+            url: pokemon.url
+          }
+        })
 
-    //       let oi = {};
-
-    //       this.getPokemonImage(pokemon.name).subscribe(res => {
-    //         temp.push({
-    //           id: res.id,
-    //           name: pokemon.name,
-    //           image: res.image,
-    //           url: pokemon.url
-    //         })
-    //       });
-    //     })
-
-
-    //     return temp;
-    //   })
-    // )
-
+        return teste;
+      })
+    )
   }
 
   getPokemonImage(pokemon : string){

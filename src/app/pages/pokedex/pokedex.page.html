@@ -59,7 +59,7 @@
     </ion-row>
 
 
-    <ion-row style="justify-content: center;">
+    <ion-row style="justify-content: center;" *ngIf="showPaginate">
       <ion-col class="pokedex-paginate">
 
         <ion-fab-button color="pokemongo" (click)="loadMore('previous')">
