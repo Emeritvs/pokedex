@@ -14,7 +14,5 @@ Projeto feito por Guilherme Augusto Gomes
     <div class="highlight highlight-source-shell"><pre>npm install -g @ionic/cli/pre></div>
 
     <p>Em seguida, para instalarmos os plugins que serao utilizados no web/mobile devemos executar o seguinte comando: </p>
-    <div class="highlight highlight-source-shell"><pre>npm install</pre></div>
+    <div class="highlight highlight-source-shell"><pre>npm install</div>
 
-    <p>Após as instalacoes, para executar o projeto em seu navegador utilize o comando: </p>
-    <div class="highlight highlight-source-shell"><pre>npm install</pre></div>
