@@ -9,15 +9,12 @@ Projeto feito por Guilherme Augusto Gomes
   <li><a href="https://ionicframework.com/docs/intro/environment">Ionic</a></li>
 </ul>
 
-    <h3>Configuracao do Projeto</h3>
-
+ <h3>Configuracao</h3>
     <p>Além do Node e o NPM estarem atualizados, será necessário instalar a CLI do Ionic para executar comandos de compilacao, criacao de arquivos e configuracao do projeto para iOS e Android. Para isso utilize o seguinte comando: </p>
     <div class="highlight highlight-source-shell"><pre>npm install -g @ionic/cli/pre></div>
 
     <p>Em seguida, para instalarmos os plugins que serao utilizados no web/mobile devemos executar o seguinte comando: </p>
     <div class="highlight highlight-source-shell"><pre>npm install</pre></div>
 
-    <h3>Configuracao do Projeto</h3>
-
     <p>Após as instalacoes, para executar o projeto em seu navegador utilize o comando: </p>
-    <div class="highlight highlight-source-shell"><pre>ionic serve</pre></div>
+    <div class="highlight highlight-source-shell"><pre>npm install</pre></div>
