@@ -11,7 +11,7 @@ Projeto feito por Guilherme Augusto Gomes
 
  <h3>Configuracao</h3>
 <p>Além do Node e o NPM estarem atualizados, será necessário instalar a CLI do Ionic para executar comandos de compilacao, criacao de arquivos e configuracao do projeto para iOS e Android</p>
- <div class="highlight highlight-source-shell"><pre>npm install -g @ionic/cli/pre></div>
+ <div class="highlight highlight-source-shell"><pre>npm install -g @ionic/cli</pre></div>
 
     <p>Para instalar os plugins do projeto será necessário acessar a pasta pelo terminal e executar o seguinte comando: </p>
 
