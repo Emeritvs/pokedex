@@ -1,0 +1,102 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Lato !important;
+    font-weight: 700;
+    color: #456a6c;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  :root {
+    --ion-color-pokemongo: #1c8797;
+    --ion-color-pokemongo-rgb: 28,135,151;
+    --ion-color-pokemongo-contrast: #ffffff;
+    --ion-color-pokemongo-contrast-rgb: 255,255,255;
+    --ion-color-pokemongo-shade: #197785;
+    --ion-color-pokemongo-tint: #3393a1;
+
+    --ion-color-button-icon: #85dab4;
+    --ion-color-button-icon-rgb: 133,218,180;
+    --ion-color-button-icon-contrast: #000000;
+    --ion-color-button-icon-contrast-rgb: 0,0,0;
+    --ion-color-button-icon-shade: #75c09e;
+    --ion-color-button-icon-tint: #91debc;
+
+  }
+  
+  .ion-color-pokemongo {
+    --ion-color-base: var(--ion-color-pokemongo);
+    --ion-color-base-rgb: var(--ion-color-pokemongo-rgb);
+    --ion-color-contrast: var(--ion-color-pokemongo-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-pokemongo-contrast-rgb);
+    --ion-color-shade: var(--ion-color-pokemongo-shade);
+    --ion-color-tint: var(--ion-color-pokemongo-tint);
+  }
+
+  .ion-color-button-icon {
+    --ion-color-base: var(--ion-color-button-icon);
+    --ion-color-base-rgb: var(--ion-color-button-icon-rgb);
+    --ion-color-contrast: var(--ion-color-button-icon-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-button-icon-contrast-rgb);
+    --ion-color-shade: var(--ion-color-button-icon-shade);
+    --ion-color-tint: var(--ion-color-button-icon-tint);
+  }
+
+  .icon-modal {
+    color: #85dab4;
+    width: 80%;
+    height: 80%;
+  }
+
+  .modal-wrapper {
+    @media only screen and (min-width: 960px) {
+      --min-height: 80%;
+    }
+  }

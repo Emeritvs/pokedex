@@ -1,0 +1,107 @@
+<ion-fab vertical="top" horizontal="start" slot="fixed" (click)="closeModal()">
+  <ion-fab-button color="pokemongo">
+    <ion-icon name="close-circle-outline" class="icon-modal"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="pokemon" (click)="favoritePokemon(pokemon)">
+  <ion-fab-button color="pokemongo">
+    <ion-icon [name]="favourited.icon" [color]="favourited.color" class="favourite-icon"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <img src="{{pokemon.image}}" class="pokemon-img" alt="">
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <span class="pokemon-name">
+                    #{{pokemon.id}} - {{pokemon.name | uppercase }}
+                  </span>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col class="pokemon-size">
+                <ion-label class="stats-size">{{pokemon.weight / 10}} kg</ion-label>
+                <ion-text class="stats-text">Peso</ion-text>
+                
+              </ion-col>
+
+              <ion-col>
+                  <ion-badge [ngClass]="type.type.name" *ngFor="let type of pokemon.types">{{type.type.name}}</ion-badge>
+              </ion-col>
+
+              <ion-col class="pokemon-size">
+                <ion-label class="stats-size">{{pokemon.height / 10}} m</ion-label>
+                <ion-text class="stats-text">Altura</ion-text>
+              </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+              <ion-col size="12" class="pokemon-stat">
+                <ion-item>
+                  <ion-label class="stats-label">ATAQUE</ion-label>
+                  <span class="stats-value">{{pokemon.stats.atk}}</span>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12" class="pokemon-stat">
+                <ion-item>
+                  <ion-label class="stats-label">DEFESA</ion-label>
+                  <!-- <ion-input></ion-input> -->
+                  <span class="stats-value">{{pokemon.stats.def}}</span>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12" class="pokemon-stat">
+                <ion-item>
+                  <ion-label class="stats-label">VIDA</ion-label>
+                  <!-- <ion-input></ion-input> -->
+                  <span class="stats-value">{{pokemon.stats.hp}}</span>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12" class="pokemon-stat">
+                <ion-item>
+                  <ion-label class="stats-label">VELOCIDADE</ion-label>
+                  <!-- <ion-input></ion-input> -->
+                  <span class="stats-value">{{pokemon.stats.spd}}</span>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12" class="pokemon-stat">
+                <ion-item>
+                  <ion-label class="stats-label">ATAQUE ESPECIAL</ion-label>
+                  <!-- <ion-input></ion-input> -->
+                  <span class="stats-value">{{pokemon.stats.xatk}}</span>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12" class="pokemon-stat">
+                <ion-item>
+                  <ion-label class="stats-label">DEFESA ESPECIAL</ion-label>
+                  <!-- <ion-input></ion-input> -->
+                  <span class="stats-value">{{pokemon.stats.xdef}}</span>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

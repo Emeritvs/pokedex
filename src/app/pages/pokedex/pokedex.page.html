@@ -1,0 +1,88 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Pokedéx
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-fab vertical="top" horizontal="start" slot="fixed" [routerLink]="['/home']">
+  <ion-fab-button color="pokemongo">
+    <ion-icon name="arrow-back-circle-outline" class="icon-modal"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-content>
+  <ion-grid style="margin-left: 6%; margin-right: 6%;">
+
+    <ion-row>
+      <ion-col>
+        <ion-toolbar mode="md">
+          <ion-searchbar placeholder="Pesquisar pokémon..." debounce="10000" (keyup)="pokemonSearch($event)" (ionClear)="pokemonSearch($event)"></ion-searchbar>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="align-items: center;">
+      Filtrar por: 
+      
+      <ion-chip class="chip" (click)="loadFilter('all')">
+        <ion-label>Todos</ion-label>
+      </ion-chip>
+
+      <ion-chip class="chip" (click)="loadFilter('favourites')">
+        <ion-icon name="star" color="warning"></ion-icon>
+        <ion-label>Favoritos</ion-label>
+      </ion-chip>
+
+    </ion-row>
+
+    <ion-row class="not-found-row" *ngIf="loading == false && filteredPokemons == 0">
+      <ion-col class="not-found-col">
+        <img class="search-status" src="'../../../assets/images/psyduck.png" alt="">
+        <ion-text>Não foram encontrados resultados</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="not-found-row" *ngIf="loading == true && filteredPokemons == 0">
+      <ion-col class="not-found-col">
+        <img class="search-status" src="'../../../assets/images/aipom.gif" alt="">
+        <ion-text>Buscando resultados...</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="cards-row" *ngIf="filteredPokemons != 0">
+      <ion-col [size]="colSize" *ngFor="let pokemon of filteredPokemons" class="card-col" title="" (click)="viewPokemon(pokemon.id)">
+        <img class="card-image" src={{pokemon.image}} alt="">
+        <ion-text class="card-title">#{{pokemon.id}} - {{pokemon.name | titlecase}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row style="justify-content: center;">
+      <ion-col class="pokedex-paginate">
+
+        <ion-fab-button color="pokemongo" (click)="loadMore('previous')">
+          <ion-icon name="arrow-back-circle-outline" class="icon-modal"></ion-icon>
+        </ion-fab-button>
+
+        <ion-text class="paginate-title">
+          {{ (pokemonOffset / 50) + 1 }} / {{ pokemonOffsetTotal }}
+        </ion-text>
+
+        <ion-fab-button color="pokemongo" (click)="loadMore('next')">
+          <ion-icon name="arrow-forward-circle-outline" class="icon-modal"></ion-icon>
+        </ion-fab-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-infinite-scroll threshold="5%" (ionInfinite)="loadMore($event)" [disabled]="scroll == false">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+</ion-content>

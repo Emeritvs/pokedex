@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="menu-center">
+
+    <ion-row>
+      <ion-col class="logo-col">
+        <img class="logo" src="../../assets/images/pokemon_logo.png" alt="">
+        <ion-label>POKEDEX</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-top: 50px;">
+      <ion-col size="12" class="pokedex-btn"><ion-button color="success" size="large" [routerLink]="['/pokedex']">Acessar Pokédex</ion-button></ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+
+
+<ion-footer mode="ios" style="display: flex; justify-content: center;">
+  <ion-label>By: Guilherme Augusto Gomes</ion-label>
+</ion-footer>

@@ -1,0 +1,112 @@
+ion-toolbar {
+    --background: transparent !important;
+    --ion-color-base: transparent !important;
+}
+
+ion-content {
+    // --background: linear-gradient(#f5f5fd, #ece3fe , #c5d8ff);
+    // --background: linear-gradient(to bottom right, #b4ef9b, #46b9b8);
+    --background: linear-gradient(to bottom right, #dcfacf, #b4ef9b, #46b9b8);
+}
+
+ion-searchbar input {
+    background: transparent !important;
+}
+
+ion-text {
+    justify-content: center;
+}
+
+.chip {
+    background: var(--ion-color-pokemongo);
+    color: #85dab4;
+}
+.cards-row {
+    justify-content: center;
+}
+
+.card-col {
+    display: grid;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    // background: #c9c6fd40;
+    background: #fafafabf;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    margin: 20px;
+
+    .card-image {
+        height: 150px;
+        width: 150px;
+    }
+
+    .card-title {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+    }
+}
+
+.card-col:hover {
+    background:  #85dab4;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.pokedex-paginate {
+    display: flex;
+    justify-content: center;
+
+    ion-text {
+        font-size: 25px;
+    }
+
+    .paginate-title {
+        display: flex;
+        align-items: center;
+        padding: 0px 20px;
+    }
+}
+
+.not-found-row {
+
+    transform: translate(0%, 50%);
+
+    .not-found-col {
+        display: grid;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 30px;
+    
+        img {
+            margin-bottom: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+        }
+    
+        .search-status {
+            margin-bottom: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            width: auto;
+
+            @media only screen and (max-width: 600px) {
+                height: 150px;
+            }
+        }
+
+        ion-text {
+            display: flex;
+            justify-content: center;
+    
+            @media only screen and (max-width: 600px) {
+                font-size: 15px;
+            }
+        }
+    }
+}
+

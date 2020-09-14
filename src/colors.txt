@@ -1,0 +1,2 @@
+pokedex-background: #ece3fe - #c5d8ff
+pokedex-inner-bg: #c9c6fd

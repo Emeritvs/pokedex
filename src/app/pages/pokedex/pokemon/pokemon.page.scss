@@ -1,0 +1,169 @@
+.normal {
+    background: #A8A77A;
+    margin: 10px;
+}
+
+.fire {
+    background: #EE8130;
+    margin: 10px;
+}
+
+.water {
+    background: #6390F0;
+    margin: 10px;
+}
+
+.electric {
+    background: #F7D02C;
+    margin: 10px;
+} 
+
+.grass {
+    background: #7AC74C;
+    margin: 10px;
+}
+
+.ice {
+    background: #96D9D6;
+    margin: 10px;
+}
+
+.fighting {
+    background: #C22E28;
+    margin: 10px;
+}
+
+.poison {
+    background: #A33EA1;
+    margin: 10px;
+}
+
+.ground {
+    background: #E2BF65;
+    margin: 10px;
+}
+
+.flying {
+    background: #A98FF3;
+    margin: 10px;
+}
+
+.psychic {
+    background: #F95587;
+    margin: 10px;
+}
+
+.bug {
+    background: #A6B91A;
+    margin: 10px;
+}
+
+.rock {
+    background: #B6A136;
+    margin: 10px;
+}
+
+.ghost {
+    background: #735797;
+    margin: 10px;
+}
+
+.dragon {
+    background: #6F35FC;
+    margin: 10px;
+} 
+
+.dark {
+    background: #705746;
+    margin: 10px;
+}
+
+.steel {
+    background: #B7B7CE;
+    margin: 10px;
+}
+
+.fairy {
+    background: #D685AD;
+    margin: 10px;
+}
+
+ion-content {
+    
+    ion-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ion-item {
+            width: 100%;
+        }
+    }
+
+    // --background: url('../../../../assets/images/pokedex_background.png');
+    --background: linear-gradient(to bottom right, #b4ef9b, #46b9b8);
+    background-repeat: repeat;
+    background-size: 50%;
+    backdrop-filter: blur(5px);
+
+    ion-row {
+        font-weight: bold;
+        padding: 15px 0px;
+    }
+
+    ion-card {
+        width: 100% !important;
+    }
+}
+
+.pokemon-img {
+    height: 150px;
+    width: 150px;
+}
+
+.pokemon-name {
+    font-size: 25px;
+    font-family: Lato, Roboto Condensed;
+    margin-left: auto;
+    margin-right: auto;
+    color: #456a6c;
+    font-weight: 700;
+}
+
+.pokemon-size {
+    display: grid !important;
+}
+
+.pokemon-stat {
+    justify-content: start !important;
+}
+
+.favourite-icon {
+    // color: #85dab4;
+    width: 50%;
+    height: 50%;
+}
+
+.stats-label {
+    font-weight: 700;
+    color: #a4afb0;
+    font-size: 15px;
+}
+
+.stats-size {
+    font-weight: 700;
+    color: #456a6c;
+    font-size: 20px;
+}
+
+.stats-text {
+    font-weight: 700;
+    color: #a4afb0;
+    justify-content: center;
+    display: flex;
+}
+
+.stats-value {
+    font-weight: 700;
+    color: #456a6c;
+}
