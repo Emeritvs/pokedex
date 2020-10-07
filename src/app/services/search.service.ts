@@ -38,11 +38,21 @@ export class SearchService {
     //       });
     //     })
 
+    return this.http.get(`${this.urlRoot}/pokemon?limit=50&offset=${offset}`).pipe(
+      map(result => {
 
-    //     return temp;
-    //   })
-    // )
+        let teste = result['results'].map((pokemon, id) => {
+          return {
+            id: offset + id + 1,
+            name: pokemon.name,
+            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${offset + id + 1}.png`,
+            url: pokemon.url
+          }
+        })
 
+        return teste;
+      })
+    )
   }
 
   getPokemonImage(pokemon : string){
