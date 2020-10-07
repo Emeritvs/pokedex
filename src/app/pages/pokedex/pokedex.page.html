@@ -37,29 +37,35 @@
 
     </ion-row>
 
-    <ion-row class="not-found-row" *ngIf="loading == false && filteredPokemons == 0">
+    <ion-row class="not-found-row" *ngIf="loading == false && noResults == true">
       <ion-col class="not-found-col">
         <img class="search-status" src="'../../../assets/images/psyduck.png" alt="">
         <ion-text>Não foram encontrados resultados</ion-text>
       </ion-col>
     </ion-row>
 
-    <ion-row class="not-found-row" *ngIf="loading == true && filteredPokemons == 0">
+    <ion-row class="not-found-row" *ngIf="loading == true && noResults == false">
       <ion-col class="not-found-col">
         <img class="search-status" src="'../../../assets/images/aipom.gif" alt="">
         <ion-text>Buscando resultados...</ion-text>
       </ion-col>
     </ion-row>
 
-    <ion-row class="cards-row" *ngIf="filteredPokemons != 0">
+    <ion-row class="not-found-row" *ngIf="tab == 'favourites'">
+      <ion-col class="not-found-col">
+        <img class="search-status" src="'../../../assets/images/wooper.png" alt="">
+        <ion-text>Você não possui favoritos, adicione-os pesquisando na aba "Todos".</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="cards-row" *ngIf="filteredPokemons.length != 0 && loading == false">
       <ion-col [size]="colSize" *ngFor="let pokemon of filteredPokemons" class="card-col" title="" (click)="viewPokemon(pokemon.id)">
         <img class="card-image" src={{pokemon.image}} alt="">
         <ion-text class="card-title">#{{pokemon.id}} - {{pokemon.name | titlecase}}</ion-text>
       </ion-col>
     </ion-row>
 
-
-    <ion-row style="justify-content: center;" *ngIf="showPaginate">
+    <ion-row *ngIf="paginate == true" style="justify-content: center;">
       <ion-col class="pokedex-paginate">
 
         <ion-fab-button color="pokemongo" (click)="loadMore('previous')">
