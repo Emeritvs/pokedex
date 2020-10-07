@@ -15,7 +15,10 @@ export class SearchService {
 
   async getAll(offset : number){
     return await axios.get(`${this.urlRoot}/pokemon?limit=50&offset=${offset}`)
-    .then(res => res.data);
+    .then(res => {
+      console.log(res.data);
+      return res.data
+    });
 
     // return this.http.get(`${this.urlRoot}/pokemon?limit=100&offset=${offset}`).pipe(
     //   map(result => {
@@ -49,8 +52,6 @@ export class SearchService {
           id: result['id'],
           image: result['sprites'].front_default
         };
-
-        // console.log(dados);
 
         return dados;
       })
@@ -130,8 +131,8 @@ export class SearchService {
       };
 
       return dados;
-    }).catch(err => {
-      return 'none';
+    }).catch(() => {
+      return "none";
     })
   }
 

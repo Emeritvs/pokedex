@@ -23,8 +23,11 @@ export class PokedexPage implements OnInit {
   public scrollAuto:boolean = false;
   public selecionarItem:boolean;
   private time : any = null;
-  private loading : boolean = false;
+  private loading : boolean = true;
   private scroll : boolean = true;
+  private paginate : boolean = false;
+  private noResults : boolean = false;
+  private tab : string = "all";
 
   constructor(
     private pokemonService : SearchService,
@@ -32,9 +35,6 @@ export class PokedexPage implements OnInit {
     private platform : Platform,
     private modalController : ModalController
   ) { 
-    this.platform.ready().then(() => {
-      this.loadFavourites();
-    });
   }
 
   ngOnInit() {
@@ -45,7 +45,10 @@ export class PokedexPage implements OnInit {
       this.colSize = 2;
     }
     
-    this.listPokemon(this.pokemonOffset);
+    this.listPokemon(this.pokemonOffset).then(() => {
+      this.loading = false;
+      this.paginate = true;
+    });
     this.pokemonService.getPaginate().then(res => this.pokemonOffsetTotal = res.count / 50);
   }
 
@@ -57,27 +60,16 @@ export class PokedexPage implements OnInit {
     console.log(this.pokemonOffset); // ! Indice para trazer resultados
     this.pokemons = [];
 
-    // (await this.pokemonService.getAll(this.pokemonOffset)).subscribe(res => {
-    //   this.pokemons = res;
-    //   this.filteredPokemons = this.pokemons.sort((a, b) =>  {
-    //     if (a.id > b.id) {
-    //       return 1;
-    //     }
-    //     if (a.id < b.id) {
-    //       return -1;
-    //     }
-    //     return 0;
-    //   })
-    // });
+    await this.pokemonService.getAll(params).then(async data => {
 
-    await this.pokemonService.getAll(params).then(data => {
-      data.results.forEach(pokemon => {
-        this.pokemonService.getPokemonCard(pokemon.url).then(res => {
+      for (let i = 0; i < data.results.length; i++) {
+        await this.pokemonService.getPokemonCard(data.results[i].url).then(res => {
+
           const pokemonCard = {
             id: res['id'],
-            name: pokemon.name,
+            name: data.results[i].name,
             image: res['image'],
-            url: pokemon.url,
+            url: data.results[i].url,
           };
           
           let alreadyExists = this.pokemons.some(pokemon => pokemon.id === pokemonCard.id);
@@ -87,33 +79,80 @@ export class PokedexPage implements OnInit {
           else {
             console.log(`Pokemon com ID: ${pokemonCard.id} já existe!`);
           }
-        })
-      });
+        });
+      }
+
+      // data.results.forEach(pokemon => {
+      //   this.pokemonService.getPokemonCard(pokemon.url).then(res => {
+      //     const pokemonCard = {
+      //       id: res['id'],
+      //       name: pokemon.name,
+      //       image: res['image'],
+      //       url: pokemon.url,
+      //     };
+          
+      //     let alreadyExists = this.pokemons.some(pokemon => pokemon.id === pokemonCard.id);
+      //     if (!alreadyExists) {
+      //       this.pokemons.push(pokemonCard);
+      //     }
+      //     else {
+      //       console.log(`Pokemon com ID: ${pokemonCard.id} já existe!`);
+      //     }
+      //   })
+      // });
 
       this.filteredPokemons = this.pokemons; // ! Vetor que recebe o objeto resultante das requisições
     });
   }
 
   async loadFavourites(){
-      this.favouritesService.getAllFavorites().then(favourites => {
-        this.favourites = favourites;
-      })
+    await this.favouritesService.getAllFavorites().then(favourites => {
+      this.favourites = [];
+
+      console.log(favourites);
+
+      if (favourites != null && favourites.length > 0) {
+        for (let i = 0; i < favourites.length; i++) {
+          let alreadyExists = this.favourites.some((pokemon : any) => pokemon.id === favourites[i].id);
+  
+          if (!alreadyExists) {
+            this.favourites.push(favourites[i]);
+          }
+        }
+      }
+      else {
+        this.filteredPokemons = this.favourites;
+        this.tab = "favourites";
+      }
+
+
+      // this.favourites = favourites;
+    });
   }
 
   async loadFilter(params : string){
     if (params == 'favourites') {
       await this.loadFavourites().then(() => {
         this.scroll = false;
+        this.paginate = false;
+        this.noResults = false;
+
         this.filteredPokemons = this.favourites;
-      })
+      });
     }
     else {
+      this.tab = "all";
       this.scroll = true;
+      this.paginate = true;
+      this.noResults = false;
       this.filteredPokemons = this.pokemons;
     }
   }
 
   async loadMore(params : any){
+    this.paginate = false;
+    this.loading = true;
+
     if (params == 'next') {
       this.pokemonOffset >= 1050 ? this.pokemonOffset =  1050 : this.pokemonOffset+= 50;
     }
@@ -128,14 +167,16 @@ export class PokedexPage implements OnInit {
     }
 
     await this.listPokemon(this.pokemonOffset).then(() => {
-      // event.target.complete();
-      // console.log(this.pokemonOffset)
+      this.loading = false;
+      this.paginate = true;
     });
   }
 
   pokemonSearch(event : any) {
     clearTimeout(this.time);
     this.loading = true;
+    this.paginate = false;
+    this.noResults = false;
     this.filteredPokemons = [];
 
     this.time = setTimeout(() => {
@@ -143,31 +184,23 @@ export class PokedexPage implements OnInit {
 
       if (this.queryText == "") {
         this.filteredPokemons = this.pokemons;
+        this.loading = false;
+        this.paginate = true;
       }
       else {
-        // const filter = this.queryText.toUpperCase();
         const filter = this.queryText.toLowerCase();
 
         this.pokemonService.getPokemonName(filter).then(res => {
-          res == 'none' ? this.filteredPokemons = this.filteredPokemons : this.filteredPokemons.push(res);
+          if (res == 'none') {
+            this.loading = false;
+            this.noResults = true;
+          }
+          else {
+            this.loading = false;
+            this.filteredPokemons.push(res);
+          }
         })
-  
-        // this.filteredPokemons = this.pokemons.filter((pokemon : any) => {
-        //   if (pokemon.name != undefined && pokemon.name != '') {
-        //     for (let i = 0; i < pokemon.name.length; i++) {
-        //       let pokemonName = pokemon.name || ' ';
-            
-        //       if (pokemonName.toUpperCase().indexOf(filter) > -1) {
-        //         return pokemon.name;
-        //       }
-        //     }
-        //   }
-        //   else {
-        //     console.log(`Pokemon ${pokemon.id} sem nome !`);
-        //   }
-        // });
       }
-      this.loading = false;
     }, 1000);
   }
 
@@ -176,6 +209,9 @@ export class PokedexPage implements OnInit {
       component: PokemonPage,
       componentProps: { pokemonId: id }
     });
+
+    modal.onDidDismiss().then(() => this.loadFavourites());
+
     return await modal.present();
   }
 }
