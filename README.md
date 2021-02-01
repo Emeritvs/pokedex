@@ -65,27 +65,35 @@ Para executar a versão web do projeto em sua máquina execute o seguinte comand
 Para realizar a compilação para um dispositivo móvel em forma de app, serão necessários os seguintes comandos:
 
 ```ionic cap add android```
+
 Comando necessário para gerar a pasta onde serão guardados os arquivos do projeto convertidos para Android;
 
 ```ionic cap add ios```
+
 Comando necessário para gerar a pasta onde serão guardados os arquivos do projeto convertidos para iOS (somente para usuários macOS e que irão compilar o projeto num dispositivo iOS pelo [Xcode](https://developer.apple.com/xcode/));
 
 ```ionic build```
+
 Para que seja executada a conversão dos códigos TypeScript do projeto para JavaScript ES2015 (otimização para o mobile);
 
 ```npx jetifier```
+
 Execute esse comando sempre que instalar um novo plugin pelo comando ```npm install```, ele  irá otimizar os plugins instalados do [Capacitor](https://capacitorjs.com) e convertê-los para Android X caso o seu projeto mobile utilize essa versão;
 
 ```ionic cap sync```
+
 Execute esse comando para sincronizar e atualizar plugins adicionados ao projeto, os plugins podem ser encontrados em [Capacitor](https://capacitorjs.com);
 
 ```ionic cap copy```
+
 Sempre que adicionar um novo comando é necessário executar este comando para que o mesmo seja implementado nas pastas onde são gerados os arquivos para o mobile, senão o plugin será somente instalado nos arquivos principais do projeto (parte web);
 
 Após realizar os comandos anteriores, para compilar o projeto e gerar uma versão app dele será necessário o seguinte comando:
  
 Para instalar em um dispositivo Android:  ```ionic cap open android``` 
+
 ou
+
 Para instalar em um dispositivo iOS (requer estar em uma máquina com macOS e [Xcode](https://developer.apple.com/xcode/)):  ```ionic cap open ios``` 
 
 Após abrir o programa de compilação recomendo seguir estes tutorial pra cada programa:
