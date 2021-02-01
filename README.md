@@ -96,10 +96,11 @@ ou
 
 Para instalar em um dispositivo iOS (requer estar em uma máquina com macOS e [Xcode](https://developer.apple.com/xcode/)):  ```ionic cap open ios``` 
 
-Após abrir o programa de compilação recomendo seguir estes tutorial pra cada programa:
+Após abrir o programa de compilação recomendo seguir estes tutoriais para cada programa:
 
--Android: https://developer.android.com/training/basics/firstapp/running-app
--iOS: https://codewithchris.com/deploy-your-app-on-an-iphone/
+-Android Studio (Dispositivos Android): https://developer.android.com/training/basics/firstapp/running-app
+
+-Xcode (Dispositivos iOS): https://codewithchris.com/deploy-your-app-on-an-iphone/
 
 Ao executar os tutoriais acima, o projeto será instalado como um app no dispositivo do qual você conectou em sua máquina via USB.
 
