@@ -33,7 +33,7 @@ Nesse projeto foram utilizadas as seguintes integrações:
 ## 💻 Projeto
 O aplicativo foi desenvolvido em teste de emprego para a empresa Venturus, tendo como requisitos desenvolver uma aplicação utilizando do framework Angular/Angular JS e realizando os requisitos exigidos alimentando a aplicação com a api pública [PokéAPI](https://pokeapi.co)
 
-- [Versão Demo Web (Em breve)]
+- [Versão Demo Web (Banco de dados em desenvolvimento)](https://emeritus-pokedex.web.app)
 - [Versão Demo Mobile (Em breve)]
 
 ## 🔧 Instalação
