@@ -61,5 +61,12 @@ ion-content {
   .pokedex-btn {
     display: flex;
     justify-content: center;
+    
+
+    ion-button {
+      background-color: #1c8797 !important;
+      color: #85dab4 !important;
+      border-radius: 25px;
+    }
   }
 }

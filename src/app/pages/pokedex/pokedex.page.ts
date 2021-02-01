@@ -109,8 +109,6 @@ export class PokedexPage implements OnInit {
     await this.favouritesService.getAllFavorites().then(favourites => {
       this.favourites = [];
 
-      console.log(favourites);
-
       if (favourites != null && favourites.length > 0) {
         for (let i = 0; i < favourites.length; i++) {
           let alreadyExists = this.favourites.some((pokemon : any) => pokemon.id === favourites[i].id);
@@ -209,8 +207,6 @@ export class PokedexPage implements OnInit {
       component: PokemonPage,
       componentProps: { pokemonId: id }
     });
-
-    modal.onDidDismiss().then(() => this.loadFavourites());
 
     return await modal.present();
   }

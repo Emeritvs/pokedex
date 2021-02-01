@@ -24,17 +24,15 @@
     </ion-row>
 
     <ion-row style="align-items: center;">
-      Filtrar por: 
-      
-      <ion-chip class="chip" (click)="loadFilter('all')">
+      <span class="default-color">Filtrar por: </span>
+      <ion-chip class="chip-pokemongo" (click)="loadFilter('all')">
         <ion-label>Todos</ion-label>
       </ion-chip>
 
-      <ion-chip class="chip" (click)="loadFilter('favourites')">
+      <ion-chip class="chip-pokemongo" (click)="loadFilter('favourites')">
         <ion-icon name="star" color="warning"></ion-icon>
         <ion-label>Favoritos</ion-label>
       </ion-chip>
-
     </ion-row>
 
     <ion-row class="not-found-row" *ngIf="loading == false && noResults == true">
@@ -61,7 +59,7 @@
     <ion-row class="cards-row" *ngIf="filteredPokemons.length != 0 && loading == false">
       <ion-col [size]="colSize" *ngFor="let pokemon of filteredPokemons" class="card-col" title="" (click)="viewPokemon(pokemon.id)">
         <img class="card-image" src={{pokemon.image}} alt="">
-        <ion-text class="card-title">#{{pokemon.id}} - {{pokemon.name | titlecase}}</ion-text>
+        <ion-text class="card-title default-color">#{{pokemon.id}} - {{pokemon.name | titlecase}}</ion-text>
       </ion-col>
     </ion-row>
 

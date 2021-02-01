@@ -17,9 +17,9 @@ ion-text {
     justify-content: center;
 }
 
-.chip {
-    background: var(--ion-color-pokemongo);
-    color: #85dab4;
+.chip-pokemongo {
+    background: var(--ion-color-pokemongo) !important;
+    color: #85dab4 !important;
 }
 .cards-row {
     justify-content: center;
@@ -50,7 +50,7 @@ ion-text {
 
 .card-col:hover {
     background:  #85dab4;
-    color: white;
+    color: white !important;
     cursor: pointer;
     transition: 0.2s;
 }
