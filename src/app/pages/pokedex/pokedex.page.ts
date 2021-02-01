@@ -57,6 +57,7 @@ export class PokedexPage implements OnInit {
   }
 
   async listPokemon(params : number){
+    this.showPaginate = true;
     console.log(this.pokemonOffset); // ! Indice para trazer resultados
     this.pokemons = [];
 
@@ -134,7 +135,6 @@ export class PokedexPage implements OnInit {
         this.scroll = false;
         this.paginate = false;
         this.noResults = false;
-
         this.filteredPokemons = this.favourites;
       });
     }
@@ -181,6 +181,7 @@ export class PokedexPage implements OnInit {
       this.queryText = event.target.value;
 
       if (this.queryText == "") {
+        this.showPaginate = true;
         this.filteredPokemons = this.pokemons;
         this.loading = false;
         this.paginate = true;
