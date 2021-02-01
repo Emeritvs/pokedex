@@ -28,6 +28,7 @@ export class PokedexPage implements OnInit {
   private paginate : boolean = false;
   private noResults : boolean = false;
   private tab : string = "all";
+  private showPaginate : boolean = true;
 
   constructor(
     private pokemonService : SearchService,
@@ -109,8 +110,6 @@ export class PokedexPage implements OnInit {
   async loadFavourites(){
     await this.favouritesService.getAllFavorites().then(favourites => {
       this.favourites = [];
-
-      console.log(favourites);
 
       if (favourites != null && favourites.length > 0) {
         for (let i = 0; i < favourites.length; i++) {
@@ -210,8 +209,6 @@ export class PokedexPage implements OnInit {
       component: PokemonPage,
       componentProps: { pokemonId: id }
     });
-
-    modal.onDidDismiss().then(() => this.loadFavourites());
 
     return await modal.present();
   }
