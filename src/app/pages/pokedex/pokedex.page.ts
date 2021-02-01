@@ -28,6 +28,7 @@ export class PokedexPage implements OnInit {
   private paginate : boolean = false;
   private noResults : boolean = false;
   private tab : string = "all";
+  private showPaginate : boolean = true;
 
   constructor(
     private pokemonService : SearchService,
