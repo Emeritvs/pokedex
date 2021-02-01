@@ -25,7 +25,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Ionic](https://ionicframework.com)
 - [Capacitor](https://capacitorjs.com)
 - [Sass](https://sass-lang.com/documentation/syntax)
-- [Firebase (em desenvolvimento)](https://firebase.google.com)
+- [Firebase (em implementação no projeto)](https://firebase.google.com)
 
 Nesse projeto foram utilizadas as seguintes integrações:
 - [PokéAPI](https://pokeapi.co)
@@ -108,4 +108,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ---
 
-Projeto desenvolvido por Guilherme Gomes (Emeritvs) em teste para a [Venturus] (https://venturus.org.br) :wave:
+Projeto desenvolvido por Guilherme Gomes (Emeritvs) em teste para a [Venturus](https://venturus.org.br) :wave:
