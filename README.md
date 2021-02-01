@@ -41,7 +41,7 @@ O aplicativo foi desenvolvido em teste de emprego para a empresa Venturus, tendo
 Para executar o projeto em sua máquina/dispostivo, serão necessários os seguintes recursos instalados:
 
 - [Node.js](https://nodejs.org/en/)
-- [Yarn](https://yarnpkg.com) (Opcional)
+- [Yarn (Opcional)](https://yarnpkg.com)
 - [Ionic CLI (instalação por linha de comando)](https://ionicframework.com/docs/intro/cli)
 - [Android Studio](https://developer.android.com/studio)
 - [Xcode (somente para usuários macOS e que irão compilar para dispositivos iOS)](https://developer.apple.com/xcode/)
